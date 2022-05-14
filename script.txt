@@ -1,0 +1,66 @@
+//Challenge I
+
+//1. Create an array of 50  random numbers from 1 to 100, Dynamically
+let fiftyRandomNumber = [];
+for (let i = 1; i <= 50; i++) {
+  fiftyRandomNumber.push(Math.floor(Math.random() * 100));
+}
+
+// 2. sort the array in descending order
+const sortToDescending = fiftyRandomNumber.sort((a, b) => b - a);
+
+// 3. get the total value of the array
+let sum = 0;
+for (let i = 0; i < sortToDescending.length; i++) {
+  sum += sortToDescending[i];
+}
+//using reduce
+const sumUsingReduce = sortToDescending.reduce((element,value)=>element+value,0)
+console.log(sumUsingReduce);
+
+
+//4. creat array for odd and even numbers out of the original array
+let odd = [];
+let even = [];
+for (let i = 0; i < sortToDescending.length; i++) {
+  if (sortToDescending[i] % 2 !== 0) {
+    odd.push(sortToDescending[i]);
+  } else {
+    even.push(sortToDescending[i]);
+  }
+}
+//using filter
+let filterOdd = sortToDescending.filter(element=>element%2!==0)
+console.log(filterOdd)
+let filterEven = sortToDescending.filter(element=>element%2==0);
+console.log(filterEven);
+
+
+//Challenge II Removing duplicate from sortToDescending because it is easy to test
+let arrayWithNoDuplicate = [];
+for (let i = 0; i < sortToDescending.length; i++) {
+  if (arrayWithNoDuplicate.indexOf(sortToDescending[i]) == -1) {
+    arrayWithNoDuplicate.push(sortToDescending[i]);
+  }
+}
+
+//using set
+const arrayWithNoDuplicateUsingSet = [...new Set(sortToDescending)];
+console.log(arrayWithNoDuplicateUsingSet);
+//Set also can be written like this
+const arrayWithNoDuplicateUsingSet = new Set(sortToDescending);
+console.log(Array.from(arrayWithNoDuplicateUsingSet));
+
+
+const origionalArrayToDescending = `This figure shows our origional array in descending order:-\n${sortToDescending}\n\n`;
+const totalSum = `This figure shows our Array's total sum:-\n${sum}\n\n`;
+const oddOnlyArray = `This figure shows our Array's odd value only:-\n${odd}\n\n`;
+const evenOnlyArray = `This figure shows our Array's even value only:-\n${even}\n\n`;
+const noDuplicateArray = `This figure shows our Array's with no duplicate value in descending order:-\n${arrayWithNoDuplicate}\n\n`;
+
+console.log(origionalArrayToDescending);
+console.log(totalSum);
+console.log(oddOnlyArray);
+console.log(evenOnlyArray);
+//Challenge 2
+console.log(noDuplicateArray);
